@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Teste Componente Galeria</title>
+
+<script src="jquery.js"></script> 
+<script> 
+    $(function(){
+      $("#DivContent").load("galeria_tab.html"); 
+    });
+</script> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+<style>
+    .teste-tamanho{
+        width: 80%;
+    }
+
+    .casca{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2%;
+        height: 100vh;
+    }
+</style>
+
+</head>
+
+<body>
+    <div class="casca">
+        <div class="teste-tamanho">
+            <div id="DivContent"></div>
+        </div>
+    </div>
+    
+</body>
+	
+</html>

@@ -1,0 +1,262 @@
+.galeria-tab{
+    width: 100%;
+    margin: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    user-select: none;    
+
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .topo{
+        display: none;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-start;
+
+        .mostrador-indice{
+            font-family: Roboto;
+            font-size: calc(30% + 1vw + 1vh);
+            font-style: normal;
+            font-weight: 500;
+            line-height: 150%;
+            padding: 0.8% 2%;
+        }
+    }
+
+    .corpo{
+        width: 100%;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: space-between;        
+
+        .visualizador-zoom{     
+            width: 100%;      
+            order: 2; 
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+            background-repeat: no-repeat;
+            background-size: 300% 300%;
+            aspect-ratio: 1/1;
+
+            .selo-desconto{
+                display: none;
+                width: 14%;
+                height: 14%;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                background: #008035;                
+                border-radius: 50%;
+                right: 2%;
+                top: 0.2%;
+
+                label{
+                    font-family: 'Roboto';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 120%;
+                    line-height: 114%;
+                    color: #fff;
+                }
+            }
+
+            .imagem-selecionada{
+                width: 100%;
+                height: 100%;
+                aspect-ratio: 1/1;
+                object-fit: fill;
+                transition: opacity 0.5s;
+
+                &:hover{
+                    opacity: 0;
+                }
+            }
+            
+            &.has-desconto{
+                .selo-desconto{
+                    display: flex;
+                }
+            }
+        }
+
+        .controle{
+            display: none;  
+            height: 100%;
+            width: 1%;
+            align-items: center;		
+            justify-content: center;			
+            color: #34393B;
+            font-size: calc(10% + 1vh + 1vw);
+            opacity: 1;		
+            margin: 0 2%;
+
+            &:hover{					
+                cursor: pointer;
+            }
+
+            &.controle--is-inativo{
+                pointer-events: none;
+                opacity: 0.4;
+            }
+        }
+
+        .js-anterior{
+            order: 1;
+        }
+
+        .js-proximo{
+            order: 3
+        }
+    }
+
+    .base{
+        width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+        margin: 1.4% 0;
+
+        .nav-imagens{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .lista-miniaturas{
+                width: 100%;
+                display: flex;
+                overflow: hidden;
+
+                .caixa-miniatura{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 1 0 9%;
+                    padding: 1.2%;
+                    margin: 0 1%;
+                    border-radius: 8%;	
+                    position: relative;
+                    
+                    aspect-ratio: 1/1;
+
+                    img{	
+                        width: 100%;
+                        cursor: pointer;                         			
+                        aspect-ratio: 1/1;	
+                        border-radius: 8%;	
+                    }
+
+                    &.caixa-miniatura--is-selecao{
+                        border: 1px solid #696E6E;
+                    }
+                }
+
+                .mais-imagens{
+                    background-color: #696E6E;
+
+                    img{
+                        mix-blend-mode: multiply;
+                    }
+
+                    label{
+                        position: absolute;
+						color: #fff;
+						font-family: 'Roboto';
+						font-style: normal;
+						font-size: 3vw;
+                    }
+
+                    .js-abrir-mais-imagens{
+                        width: 100%;
+						height: 100%;
+                        position: absolute;
+						background-color: transparent;						
+						cursor: pointer;
+                    }
+                }
+            }
+
+            .efeito-fade{
+                display: none;
+                height: 300px;
+                width: 110px;
+                position: absolute;
+                right: 20%;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 24%, #FFF 100%);
+            }
+        }
+
+        .nav-pontos{
+            display: none;
+            margin: 0.8% 0;
+
+            .lista-pontos{    
+                display: flex;  
+                justify-content: center;
+				align-items: center;    
+
+                .ponto{                    
+                    width: 40px;
+					height: 40px;					
+					margin: 0 15px;
+					background-color: #bbb;
+					border-radius: 50%;
+					transition: background-color 0.6s ease;
+                    cursor: pointer;
+
+                    &.ponto--is-selecao{
+                        background: #696E6E;
+                    }
+                }
+            }
+        }
+    }
+
+    &.is-slider{
+        .topo{
+            display: flex;
+        }
+
+        .corpo{
+            height: 65%;
+
+            .visualizador-zoom{
+                width: 50%;
+
+                .selo-desconto{
+                    display: none !important;
+                }
+            }
+
+            .controle{
+                display: flex;
+            }
+        }
+
+        .base{
+            .nav-imagens{
+                .lista-miniaturas{
+                    height: 42%;
+                    width: 58%;
+                }
+
+                .efeito-fade{
+                    display: block;
+                }
+            }            
+
+            .nav-pontos{
+                display: flex;
+            }
+        }
+    }
+}
